@@ -1,7 +1,14 @@
 const translate = require("google-translate-cn-api");
 const express = require("express");
+const AV = require('leanengine');
+AV.init({
+  appId: process.env.LEANCLOUD_APP_ID || '{{appid}}',
+  appKey: process.env.LEANCLOUD_APP_KEY || '{{appkey}}',
+  masterKey: process.env.LEANCLOUD_APP_MASTER_KEY || '{{masterkey}}'
+});
 
 const app = express();
+app.use(AV.express());
 
 const port = process.env.LEANCLOUD_APP_PORT;
 const domain = "com";
